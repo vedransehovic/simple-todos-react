@@ -6,7 +6,9 @@ import { TasksCollection } from "../api/TaskCollection";
 
 export const App = () => {
   //fetch tasks from DB
-  const tasks = useTracker(() => TasksCollection.find({}).fetch());
+  const tasks = useTracker(() =>
+    TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
+  );
 
   return (
     <div>
