@@ -12,6 +12,8 @@ const toggleChecked = ({ _id, isChecked }) => {
   });
 };
 
+const deleteTask = ({ _id }) => TasksCollection.remove(_id);
+
 export const App = () => {
   //fetch tasks from DB
   const tasks = useTracker(() =>
@@ -24,7 +26,12 @@ export const App = () => {
       <TaskForm />
       <ul>
         {tasks.map((task) => (
-          <Task key={task._id} task={task} onCheckboxClick={toggleChecked} />
+          <Task
+            key={task._id}
+            task={task}
+            onCheckboxClick={toggleChecked}
+            onDeleteClick={deleteTask}
+          />
         ))}
       </ul>
     </div>
