@@ -1,6 +1,6 @@
 import React from "react";
 
-const Task = ({ task }) => {
+const Task = ({ task, onCheckboxClick }) => {
   return (
     <li>
       <input
@@ -9,7 +9,7 @@ const Task = ({ task }) => {
         onClick={() => onCheckboxClick(task)}
         readOnly
       />
-      {task.text}
+      <span>{task.text}</span>
     </li>
   );
 };

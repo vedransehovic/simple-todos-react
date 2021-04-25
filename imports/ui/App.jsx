@@ -7,9 +7,9 @@ import { TasksCollection } from "../api/TaskCollection";
 const toggleChecked = ({ _id, isChecked }) => {
   TasksCollection.update(_id, {
     $set: {
-      isChecked: !isChecked
-    }
-  })
+      isChecked: !isChecked,
+    },
+  });
 };
 
 export const App = () => {
@@ -23,8 +23,10 @@ export const App = () => {
       <h1>Welcome to Meteor!</h1>
       <TaskForm />
       <ul>
-      { tasks.map(task => <Task key={ task._id } task={ task } onCheckboxClick={toggleChecked} />) }
-  </ul>
+        {tasks.map((task) => (
+          <Task key={task._id} task={task} onCheckboxClick={toggleChecked} />
+        ))}
+      </ul>
     </div>
   );
 };
