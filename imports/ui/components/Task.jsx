@@ -10,6 +10,7 @@ const Task = ({ task }) => {
         readOnly
       />
       {task.text}
+      just some change
     </li>
   );
 };
