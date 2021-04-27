@@ -15,11 +15,15 @@ const toggleChecked = ({ _id, isChecked }) => {
 const deleteTask = ({ _id }) => TasksCollection.remove(_id);
 
 export const App = () => {
+  //completed tasks filter
+  const hideCompletedFilter = { isChecked: { $ne: true } };
   //initializing state
   const [hideCompleted, setHideCompleted] = useState(false);
   //fetch tasks from DB
   const tasks = useTracker(() =>
-    TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
+    TasksCollection.find(hideCompleted ? hideCompletedFilter : {}, {
+      sort: { createdAt: -1 },
+    }).fetch()
   );
 
   return (
