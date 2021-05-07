@@ -13,6 +13,7 @@ const toggleChecked = ({ _id, isChecked }) => {
 };
 
 const deleteTask = ({ _id }) => TasksCollection.remove(_id);
+//comments here
 
 export const App = () => {
   //completed tasks filter
